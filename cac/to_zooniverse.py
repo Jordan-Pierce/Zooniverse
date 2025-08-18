@@ -192,14 +192,14 @@ def upload_to_zooniverse(args):
         panoptes_client.Panoptes.connect(username=args.username, password=args.password)
         print(f"NOTE: Authentication to Zooniverse successful for {args.username}")
     except Exception as e:
-        raise Exception(f"ERROR: Could not login to Panoptes for {args.username}\n{e}")
+        print(f"ERROR: Could not login to Panoptes for {args.username}\n{e}")
 
     try:
         # Get access to the Zooniverse project given the provided credentials
         project = panoptes_client.Project.find(id=args.zoon_project_id)
         print(f"NOTE: Connected to Zooniverse project '{project.title}' successfully")
     except Exception as e:
-        raise Exception(f"ERROR: Could not access project {args.zoon_project_id}.\n{e}")
+        print(f"ERROR: Could not access project {args.zoon_project_id}.\n{e}")
 
     try:
         # Get the TATOR api given the provided token
